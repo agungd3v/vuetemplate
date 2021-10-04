@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { auth, hasauth } from '../middleware'
+import { init, auth, hasauth } from '../middleware'
 
 Vue.use(VueRouter)
 
@@ -24,5 +24,7 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+router.beforeEach(init)
 
 export default router

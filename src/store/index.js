@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as Cookies from 'js-cookie'
 
 Vue.use(Vuex)
 
@@ -10,6 +9,13 @@ export default new Vuex.Store({
     token: null
   },
   mutations: {
+    initializeapp(state) {
+      const getBearer = JSON.parse(localStorage.getItem('bearer'))
+      if (getBearer) {
+        state.user = getBearer.user
+        state.token = getBearer.token
+      }
+    },
     setUser (state, value) {
       state.user = value
     },
@@ -28,8 +34,7 @@ export default new Vuex.Store({
       if (params) {
         commit('setUser', null)
         commit('setToken', null)
-        Cookies.remove('vuex')
-        return true
+        localStorage.removeItem('bearer')
       }
     }
   },
