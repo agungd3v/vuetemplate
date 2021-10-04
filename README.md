@@ -1,5 +1,3 @@
-# vuetemplate
-
 ## Project setup
 ```
 npm install
