@@ -16,6 +16,11 @@ const routes = [
     name: 'SignIn',
     component: () => import('../views/SignIn.vue'),
     beforeEnter: hasauth
+  },
+  {
+    path: '*',
+    name: 'Page404',
+    component: () => import('../views/errors/Page404.vue')
   }
 ]
 
